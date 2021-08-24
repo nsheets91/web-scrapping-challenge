@@ -16,7 +16,7 @@ def index():
 
 @app.route("/scrape")
 def scrape():
-    scraped_data = scrape_mars.scrape_all()
+    scraped_data = scraping_functions.scrape_from_all_mars_sites()
     mars_db.update({}, scraped_data, upsert=True)
     return redirect('/')
 

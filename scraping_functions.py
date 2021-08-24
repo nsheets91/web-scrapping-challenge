@@ -15,31 +15,31 @@ def scrape_from_all_mars_sites():
     news_url = 'https://redplanetscience.com/'
     browser.visit(news_url)
 
-    # creating HTML object
-    html = browser.html
-    # initiating soup object for news scrape
-    news_soup = BeautifulSoup(news_html, 'html.parser')
-    # searching html for latest news
-    latest_news = news_soup.select_one('ul.item_list li.slide')
-    # getting title and paragraph for latest article
-    title = latest_news.find('div', class_='content_title').text
-    paragraph = latest_news.find('div', class_='article_teaser_body').text
+    # # creating HTML object
+    # news_html = browser.html
+    # # initiating soup object for news scrape
+    # news_soup = BeautifulSoup(news_html, 'html.parser')
+    # # searching html for latest news
+    # latest_news = news_soup.select_one('ul.item_list li.slide')
+    # # getting title and paragraph for latest article
+    # title = latest_news.find('div', class_='content_title').text
+    # paragraph = latest_news.find('div', class_='article_teaser_body').text
 
-    # URL of image page to be scraped and visit it with browser
-    mars_url = 'https://spaceimages-mars.com'
-    browser.visit(mars_url)
+    # # URL of image page to be scraped and visit it with browser
+    # mars_url = 'https://spaceimages-mars.com'
+    # browser.visit(mars_url)
 
-    # HTML object
-    html = browser.html
+    # # HTML object
+    # html = browser.html
 
-    # instatiating beautiful soup object and parsing using lxml
-    image_soup = BeautifulSoup(html, 'lxml')
-    # accessing the image url
-    image = image_soup.find('a', class_='showimg fancybox-thumbs')['href']
-    # slicing the page url to attach image url in a string
-    new_space_image_url = space_image_url[0:-10]
-    # attaching the image url to sliced page url
-    image_url = f"{new_space_image_url}{image}"
+    # # instatiating beautiful soup object and parsing using lxml
+    # image_soup = BeautifulSoup(html, 'lxml')
+    # # accessing the image url
+    # image = image_soup.find('a', class_='showimg fancybox-thumbs')['href']
+    # # slicing the page url to attach image url in a string
+    # new_space_image_url = space_image_url[0:-10]
+    # # attaching the image url to sliced page url
+    # image_url = f"{new_space_image_url}{image}"
 
     # URL of facts page to be scraped and visit it with browser
     facts_url = 'https://galaxyfacts-mars.com'
@@ -105,6 +105,13 @@ def scrape_from_all_mars_sites():
             except:
                 print("Scrape unsuccessful!")
     scraped_data = {
-        ""
+        # "title": title,
+        # "paragraph": paragraph,
+        "title": "testing title",
+        "paragraph": "testing paragraph",
+        # "image": image_url,
+        "image": "https://images.theconversation.com/files/229365/original/file-20180726-106502-1nt78ux.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop",
+        "facts_table_html": facts_html,
+        "hemispheres": hemi_list,
     }
     return scraped_data
