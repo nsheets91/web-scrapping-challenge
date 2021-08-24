@@ -11,42 +11,40 @@
 
 
 <body>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="jumbotron text-center">
-          <h1>Mission to Mars</h1>
-          <a class="btn btn-primary btn-lg text-center" href="/scrape" role="button">Scrape New Data!</a>  
-        </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="jumbotron text-center">
+        <h1>Mission to Mars</h1>
+        <a class="btn btn-primary btn-lg text-center" href="/scrape" role="button">Scrape New Data!</a>
       </div>
-      <div class="row">
-        <h2>Latest Mars News</h2>
-        <h3>{{mars.latest.title}}</h3>
-        <p>{{mars.latest.paragraph}}</p>
+    </div>
+    <div class="row">
+      <h2>Latest Mars News</h2>
+      <h3>{{mars.title}}</h3>
+      <p>{{mars.paragraph}}</p>
+    </div>
+    <div class="row">
+      <div class="col-md-6 text-center">
+        <h2>Featured Mars Image</h2>
+        <img class="img-responsive" src="{{ mars.image }}" alt="{{ mars.title }}">
       </div>
-      <div class="row">
-        <div class="col-md-6 text-center">
-          <h2>Featured Mars Image</h2>
-          <img class="img-responsive" src="{{ mars.latest.image }}" alt="{{ mars.latest.title }}">
-        </div>
-        <div class="col-md-6 text-center">
-          <h2>Mars Facts</h2>
-          
-        </div>
-      </div>
-      <div class="row">
-        <h2 class="text-center">Mars Hemispheres</h2>
-        <hr>
+      <div class="col-md-6 text-center">
+        <h2>Mars Facts</h2>
 
-      
-        <div class="col-md-6 text-center">
+      </div>
+    </div>
+    <div class="row">
+      <h2 class="text-center">Mars Hemispheres</h2>
+      <hr>
+      {% for hemi in mars.hemispheres %}
+      <div class="col-md-6 text-center">
         <h3>{{ hemi.title }}</h3>
-        <a class="btn btn-primary text-center" href="{{ hemi.dl_image_url }}" role="button">Download a High Resolution Image</a>
         <img class="img-responsive" src="{{ hemi.image_url }}" alt="{{ hemi.title }}">
-        </div>
+      </div>
       {% endfor %}
-    
+
+    </div>
   </div>
-</div>
 </body>
 
 </html>
